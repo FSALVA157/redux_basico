@@ -1,26 +1,5 @@
-
-interface Action {
-    type: string;
-    payload?: any;
-};
-
-const incrementAction: Action = {
-    type: "INCREMENTAR"
-}
-
-const decrementarAction: Action = {
-    type: "DECREMENTAR"
-}
-
-const multiplicarAction: Action = {
-    type: "MULTIPLICAR",
-    payload: 100
-}
-
-const dividirAction: Action = {
-    type: "DIVIDIR",
-    payload: 2
-}
+import { Action } from '././ngrx-fake/ngrx';
+import { decrementarAction, dividirAction, incrementAction, multiplicarAction, resetAction } from './contador/contador.actions';
 
 function reducer(accion : Action, state = 10){
 
@@ -36,6 +15,9 @@ function reducer(accion : Action, state = 10){
 
         case 'DIVIDIR':
             return state/accion.payload;    
+
+        case 'RESET':
+            return state = 0;    
     
         default:
             return state;
@@ -44,11 +26,8 @@ function reducer(accion : Action, state = 10){
     
 }
 
-console.log(reducer(dividirAction, 10));
-
-
-
-
-
-
-
+console.log(reducer(incrementAction, 50));
+console.log(reducer(decrementarAction, 50));
+console.log(reducer(dividirAction, 50));
+console.log(reducer(multiplicarAction, 50));
+console.log(reducer(resetAction, 50));
